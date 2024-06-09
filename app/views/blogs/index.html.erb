@@ -28,8 +28,8 @@ tr:nth-child(even) {
 	<% @blogs.each do |blog| %>
 	<tr>
 		<td><% 
-		if blog.image.present? %>
-            <%= image_tag blog.image, size: '70x100' %>
+		if blog.image_url.present? %>
+            <%= image_tag blog.image_url, size: '70x100' %>
           <% else %>
             No Image
           <% end %></td>

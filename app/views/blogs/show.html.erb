@@ -1,8 +1,6 @@
 <h3>Title : <%= @blog.title %></h3>
-<% if @blog.image.attached? %>
-  <%= image_tag @blog.image, size: '190x200' %>
-<% else %>
-  <p>No image available</p>
+<% if @blog.image_url.present? %>
+  <%= image_tag @blog.image_url, size: '100x100' %>
 <% end %>
 <p>Content : <%= @blog.content %></p>
 <p><%= link_to 'Home',root_path%></p>

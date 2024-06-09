@@ -1,0 +1,24 @@
+<%#= form_with model: @blog, url: blogs_path, local: true, html: { multipart: true } do |f| %>
+<%= form_for @blog, local: true ,data: { turbo: false } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %><br/>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <div>
+    <%= image_tag @blog.image, size: '100x100' if @blog.image.attached? %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br/>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+<%= link_to 'Back', root_path %>

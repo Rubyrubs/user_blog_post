@@ -1,0 +1,49 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h1>All Blogs</h1>
+    <%= link_to 'New Blog', new_blog_path %>
+<table class="table">
+	<thead>
+	<th>Image</th>
+	<th>Title</th>
+	<th>Content</th>
+	<th>Action</th>
+  </thead>
+<tbody>
+	<% @blogs.each do |blog| %>
+	<tr>
+		<td><% 
+		if blog.image.present? %>
+            <%= image_tag blog.image, size: '70x100' %>
+          <% else %>
+            No Image
+          <% end %></td>
+		<td><%= link_to blog.title , blog %></td>
+		<td><%= blog.content %></td>
+		<td><%= link_to 'edit',edit_blog_path(blog)%> - <%= link_to "View",blog_path(blog)%> - 
+
+        <%= link_to "Delete", blog, data: { turbo_method: :delete } %>
+			 
+		</td>
+	</tr> 
+	<% end %>
+</tbody>
+</table>
+<%= link_to 'Back', root_path %>
+
+
